@@ -195,7 +195,7 @@
       justify-content:flex-end;
       background:
         linear-gradient(180deg, rgba(10,10,10,.08) 0%, rgba(10,10,10,.72) 100%),
-        url('samuel-capa-01.png') center top/cover no-repeat;
+        url('assets/samuel-capa-01.png') center top/cover no-repeat;
     }
 
     .eyebrow{
@@ -234,10 +234,49 @@
     }
 
     .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
       margin-bottom:24px;
+    }
+
+    .hero-menu-item{
+      min-height:96px;
+      padding:16px;
+      border-radius:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+      color:#fff;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(8px);
+      transition:.2s ease;
+    }
+
+    .hero-menu-item:hover{
+      transform:translateY(-3px);
+      background:rgba(255,255,255,.16);
+      box-shadow:0 14px 24px rgba(0,0,0,.14);
+    }
+
+    .hero-menu-kicker{
+      font-size:.68rem;
+      font-weight:800;
+      color:rgba(255,255,255,.62);
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+
+    .hero-menu-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      font-size:.98rem;
+      line-height:1.35;
+      font-weight:800;
     }
 
     .hero-meta{
@@ -288,7 +327,7 @@
 
     .side-photo{
       min-height:260px;
-      background:url('samuel-capa-02.png') center top/cover no-repeat;
+      background:url('assets/samuel-capa-02.png') center top/cover no-repeat;
     }
 
     .intro-card,
@@ -345,11 +384,11 @@
     }
 
     .menu-link{
-      min-height:54px;
-      padding:12px 16px;
-      display:flex;
+      min-height:68px;
+      padding:14px 16px;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
       align-items:center;
-      justify-content:space-between;
       gap:12px;
       border-radius:16px;
       background:rgba(255,255,255,.75);
@@ -359,7 +398,45 @@
     }
 
     .menu-link:hover{transform:translateX(3px);background:#fff}
-    .menu-link span:first-child{flex:1;line-height:1.5}
+
+    .menu-number{
+      width:40px;
+      height:40px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:#1f1f1f;
+      color:#fff;
+      font-size:.72rem;
+      font-weight:900;
+      letter-spacing:.08em;
+    }
+
+    .menu-link-copy{
+      min-width:0;
+      line-height:1.35;
+    }
+
+    .menu-link-copy strong{
+      display:block;
+      color:var(--ink);
+      font-size:.92rem;
+    }
+
+    .menu-link-copy small{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:.72rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .menu-arrow{
+      color:var(--accent-2);
+      font-weight:900;
+    }
 
     .section{padding:10px 0 0}
 
@@ -401,7 +478,11 @@
       padding:18px;
       display:flex;
       align-items:flex-end;
-      background:linear-gradient(135deg,#2a2a2a,#8b7353);
+      background:
+        linear-gradient(135deg, rgba(31,31,31,.72), rgba(139,115,83,.58)),
+        linear-gradient(135deg,#2a2a2a,#8b7353);
+      background-size:cover;
+      background-position:center;
       color:#fff;
     }
 
@@ -568,7 +649,8 @@
         margin-bottom:18px;
       }
 
-      .hero-actions .btn{width:100%}
+      .hero-actions .btn,
+      .hero-menu-item{width:100%}
 
       .hero-meta{
         grid-template-columns:1fr;
@@ -681,10 +763,10 @@
         <a href="#revista">A revista</a>
         <a href="#artigos">Artigos</a>
         <a href="#editorial">Editorial</a>
-        <a class="btn btn-dark" href="artigo-01.html">Ler artigo 01</a>
+        <a href="#menu-edicao">Menu da edição</a>
       </nav>
 
-      <a class="btn btn-dark mobile-cta" href="artigo-01.html">Artigo 01</a>
+      <a class="btn btn-dark mobile-cta" href="#menu-edicao">Menu</a>
     </div>
   </header>
 
@@ -698,9 +780,19 @@
             A Executiva nasce como uma revista digital voltada para empresários, gestores e profissionais que valorizam clareza, visão prática e leitura estratégica do mercado. Um espaço para reunir artigos sobre gestão, vendas, operação, posicionamento e crescimento.
           </p>
 
-          <div class="hero-actions">
-            <a class="btn btn-dark" href="artigo-01.html">Abrir artigo de estreia</a>
-            <a class="btn btn-light" href="#artigos">Ver artigos</a>
+          <div class="hero-actions" aria-label="Menu editorial">
+            <a class="hero-menu-item" href="artigo-07.html">
+              <span class="hero-menu-kicker">Mais recente</span>
+              <span class="hero-menu-title">Perfis comportamentais <span>→</span></span>
+            </a>
+            <a class="hero-menu-item" href="#artigos">
+              <span class="hero-menu-kicker">Acervo</span>
+              <span class="hero-menu-title">Todos os artigos <span>→</span></span>
+            </a>
+            <a class="hero-menu-item" href="#editorial">
+              <span class="hero-menu-kicker">Direção</span>
+              <span class="hero-menu-title">Editorial da revista <span>→</span></span>
+            </a>
           </div>
 
           <div class="hero-meta">
@@ -731,11 +823,11 @@
             <div class="signature">Samuel Carvalho</div>
           </section>
 
-          <section class="menu-card">
+          <section class="menu-card" id="menu-edicao">
             <span class="menu-title">Menu da edição</span>
             <h3>Acesso rápido aos artigos</h3>
             <p>
-              Novos conteúdos serão adicionados a cada semana.
+              Escolha o tema e avance direto para a leitura.
             </p>
             <div class="menu-list" id="menu-list"></div>
           </section>
@@ -801,8 +893,9 @@
     /*
       COMO USAR:
       1) Cadastre abaixo os artigos que você pretende publicar.
-      2) O site só mostra automaticamente os artigos cujo arquivo HTML existir no GitHub.
-      3) Exemplo: quando você subir artigo-04.html, o Artigo 04 aparece sozinho no index.
+      2) Deixe published como false enquanto o artigo ainda não estiver aprovado.
+      3) Depois de criar artigo-XX.html e assets/artigo-XX.png, troque published para true.
+      4) No GitHub, envie sempre o HTML do artigo, a imagem PNG e este index atualizado.
     */
 
     const articles = [
@@ -812,6 +905,7 @@
         title: 'Follow up: disciplina simples que acelera vendas, gestão e execução',
         summary: 'O primeiro artigo da Executiva aborda o conceito de follow up, sua aplicação prática e por que ele se tornou uma rotina decisiva para negócios que querem avançar com método.',
         link: 'artigo-01.html',
+        cover: 'assets/followup.png',
         published: true
       },
       {
@@ -820,6 +914,7 @@
         title: 'Organograma: em tempos de IA, o maior ativo são pessoas',
         summary: 'O segundo artigo da Executiva aborda o papel do organograma na estrutura empresarial, destacando como a organização de pessoas e responsabilidades se torna ainda mais estratégica em tempos de IA para negócios que querem crescer com consistência.',
         link: 'artigo-02.html',
+        cover: 'assets/artigo-02.png',
         published: true
       },
       {
@@ -828,6 +923,7 @@
         title: 'Vamos falar sobre Indicadores?',
         summary: 'Indicadores, gestão por resultados e os números que direcionam empresas de alta performance. Esse artigo abre uma série de novas postagens exclusivas sobre indicadores comerciais, financeiros e operacionais.',
         link: 'artigo-03.html',
+        cover: 'assets/artigo-03.png',
         published: true
       },
 
@@ -838,6 +934,7 @@
   title: 'Indicadores Comerciais: empresas que crescem precisam aprender a prever',
   summary: 'Uma leitura prática sobre indicadores, metas, margem e previsibilidade.',
   link: 'artigo-04.html',
+  cover: 'assets/artigo-04.png',
   published: true
       },
       {
@@ -846,6 +943,7 @@
         title: 'Indicadores Financeiros: Os Números que Salvam Empresas — Mitos, Verdades e os Controles Essenciais para Não Perder o Rumo ',
         summary: 'Indicadores financeiros podem até parecer um assunto técnico à primeira vista, mas a realidade é que todo empresário e gestor precisa saber ler, interpretar e entender os números da própria empresa. São eles que mostram a verdadeira saúde do negócio, revelam problemas antes que se tornem crises e ajudam na tomada de decisões mais seguras, estratégicas e lucrativas.',
         link: 'artigo-05.html',
+        cover: 'assets/artigo-05.png',
         published: true
       },
       {
@@ -854,7 +952,62 @@
         title: 'Indicadores Operacionais: Eficiência, Controle e a Realidade da Gestão',
         summary: 'Indicadores operacionais mostram a eficiência real da empresa no dia a dia. Eles ajudam a identificar gargalos, desperdícios, falhas de processo e oportunidades de melhoria dentro da operação..',
         link: 'artigo-06.html',
+        cover: 'assets/artigo-06.png',
         published: true
+      },
+      {
+        number: 'Artigo 07',
+        category: 'Comportamento empresarial',
+        title: 'Perfis comportamentais: uma reflexão necessária',
+        summary: 'Uma reflexão sobre como a união entre empreendedor, facilitador e organizador fortalece empresas, melhora a execução e mostra que grandes resultados raramente nascem de uma única pessoa.',
+        link: 'artigo-07.html',
+        cover: 'assets/artigo-07.png',
+        published: true
+      },
+      {
+        number: 'Artigo 08',
+        category: 'A definir',
+        title: 'A definir',
+        summary: 'Aguardando aprovação do próximo artigo.',
+        link: 'artigo-08.html',
+        cover: 'assets/artigo-08.png',
+        published: false
+      },
+      {
+        number: 'Artigo 09',
+        category: 'A definir',
+        title: 'A definir',
+        summary: 'Aguardando aprovação do próximo artigo.',
+        link: 'artigo-09.html',
+        cover: 'assets/artigo-09.png',
+        published: false
+      },
+      {
+        number: 'Artigo 10',
+        category: 'A definir',
+        title: 'A definir',
+        summary: 'Aguardando aprovação do próximo artigo.',
+        link: 'artigo-10.html',
+        cover: 'assets/artigo-10.png',
+        published: false
+      },
+      {
+        number: 'Artigo 11',
+        category: 'A definir',
+        title: 'A definir',
+        summary: 'Aguardando aprovação do próximo artigo.',
+        link: 'artigo-11.html',
+        cover: 'assets/artigo-11.png',
+        published: false
+      },
+      {
+        number: 'Artigo 12',
+        category: 'A definir',
+        title: 'A definir',
+        summary: 'Aguardando aprovação do próximo artigo.',
+        link: 'artigo-12.html',
+        cover: 'assets/artigo-12.png',
+        published: false
       }
     ];
 
@@ -868,14 +1021,18 @@
 
       menuList.innerHTML = visibleArticles.map(article => `
         <a class="menu-link" href="${article.link}">
-          <span>${article.number} — ${article.title}</span>
-          <span>→</span>
+          <span class="menu-number">${article.number.replace('Artigo ', '')}</span>
+          <span class="menu-link-copy">
+            <strong>${article.title}</strong>
+            <small>${article.category}</small>
+          </span>
+          <span class="menu-arrow">→</span>
         </a>
       `).join('');
 
       articlesGrid.innerHTML = visibleArticles.map(article => `
         <article class="article-card">
-          <div class="article-cover">
+          <div class="article-cover" style="background-image: linear-gradient(135deg, rgba(31,31,31,.72), rgba(139,115,83,.58)), url('${article.cover}')">
             <span class="article-number">${article.number}</span>
           </div>
           <div class="article-body">
